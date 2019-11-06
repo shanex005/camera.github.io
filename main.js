@@ -12,29 +12,32 @@ if ('serviceWorker' in navigator) {
     });
   }
 
-  Notification.requestPermission(function(status) {
-    console.log('Notification permission status:', status);
-});
+ 
 
-function displayNotification() {
-  if (Notification.permission == 'granted') {
-    navigator.serviceWorker.getRegistration().then(function(reg) {
-      var options = {
-        body: 'Here is a notification body!',
-        icon: 'images/example.png',
-        vibrate: [100, 50, 100],
-        data: {
-          dateOfArrival: Date.now(),
-          primaryKey: 1
-        },
-        actions: [
-          {action: 'explore', title: 'Explore this new world',
-            icon: 'images/checkmark.png'},
-          {action: 'close', title: 'Close notification',
-            icon: 'images/xmark.png'},
-        ]
-      };
-      reg.showNotification('Hello world!', options);
-    });
+    Notification.requestPermission(function(status) {
+      console.log('Notification permission status:', status);
+      displayNotification();
+  });
+
+  function displayNotification() {
+    if (Notification.permission == 'granted') {
+      navigator.serviceWorker.getRegistration().then(function(reg) {
+        var options = {
+          body: 'Here is a notification body!',
+          icon: '/images/icons/icon-144x144.png',
+          vibrate: [100, 50, 100],
+          data: {
+            dateOfArrival: Date.now(),
+            primaryKey: 1
+          },
+          actions: [
+            {action: 'explore', title: 'Explore this new world',
+              icon: '/images/icons/icon-128x128.png'},
+            {action: 'close', title: 'Close notification',
+              icon: '/images/icons/icon-144x144.png'},
+          ]
+        };
+        reg.showNotification('Hello world!', options);
+      });
+    }
   }
-}
