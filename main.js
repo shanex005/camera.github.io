@@ -24,7 +24,7 @@ if ('serviceWorker' in navigator) {
       navigator.serviceWorker.getRegistration().then(function(reg) {
         var options = {
           body: 'Here is a notification body!',
-          icon: '/images/icons/icon-144x144.png',
+          icon: 'images/icons/icon-144x144.png',
           vibrate: [100, 50, 100],
           data: {
             dateOfArrival: Date.now(),
@@ -32,9 +32,9 @@ if ('serviceWorker' in navigator) {
           },
           actions: [
             {action: 'explore', title: 'Explore this new world',
-              icon: '/images/icons/icon-128x128.png'},
+              icon: 'images/icons/icon-128x128.png'},
             {action: 'close', title: 'Close notification',
-              icon: '/images/icons/icon-144x144.png'},
+              icon: 'images/icons/icon-144x144.png'},
           ]
         };
         reg.showNotification('Hello world!', options);
