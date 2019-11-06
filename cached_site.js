@@ -37,3 +37,26 @@ self.addEventListener('fetch', event => {
       );
 
   });
+
+
+
+///////////////////////push notification
+
+
+  self.addEventListener('notificationclose', event =>{
+    var notification =  event.notification;
+    var primaryKey = notification.data.primaryKey;
+    console.log('Closed notification: ' + primaryKey);
+  }); 
+
+
+  self.addEventListener('notificationclick', event =>{
+    var notification =  event.notification;
+    var action = event.action;
+    if( action == 'close'){
+      notification.close();
+    }
+    else {
+      clients.openWindow("http://www.google.com")
+    }
+  });
